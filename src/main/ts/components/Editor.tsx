@@ -29,6 +29,7 @@ export interface IProps {
   disabled: boolean;
   textareaName: string;
   tinymceScriptSrc: string;
+  win: Window;
 }
 
 export interface IAllProps extends Partial<IProps>, Partial<IEvents> {}
@@ -71,7 +72,7 @@ export class Editor extends React.Component<IAllProps> {
   }
 
   public componentDidMount() {
-    if (getTinymce() !== null) {
+    if (getTinymce(this.props.win) !== null) {
       this.initialise();
     } else if (this.elementRef.current && this.elementRef.current.ownerDocument) {
       ScriptLoader.load(
@@ -84,7 +85,7 @@ export class Editor extends React.Component<IAllProps> {
 
   public componentWillUnmount() {
     const editor = this.editor;
-    if (getTinymce() !== null && editor) {
+    if (getTinymce(this.props.win) !== null && editor) {
       editor.off('init', this.handleInit);
       if (editor.initialized) {
         editor.off('change keyup setcontent', this.handleEditorChange);
@@ -93,7 +94,7 @@ export class Editor extends React.Component<IAllProps> {
         });
         this.boundHandlers = {};
       }
-      getTinymce().remove(editor);
+      getTinymce(this.props.win).remove(editor);
     }
   }
 
@@ -192,6 +193,6 @@ export class Editor extends React.Component<IAllProps> {
       this.elementRef.current.style.visibility = '';
     }
 
-    getTinymce().init(finalInit);
+    getTinymce(this.props.win).init(finalInit);
   }
 }

@@ -8,8 +8,8 @@
 
 const getGlobal = (): any => (typeof window !== 'undefined' ? window : global);
 
-const getTinymce = () => {
-  const global = getGlobal();
+const getTinymce = (win:any = null) => {
+  const global = (win ? win : getGlobal());
 
   return global && global.tinymce ? global.tinymce : null;
 };

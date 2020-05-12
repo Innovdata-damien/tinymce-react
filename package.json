@@ -1,9 +1,9 @@
 {
-  "name": "@tinymce/tinymce-react",
-  "version": "3.6.0",
+  "name": "@innovdata-damien/tinymce-react",
+  "version": "3.6.3",
   "description": "Official TinyMCE React Component",
   "repository": {
-    "url": "https://github.com/tinymce/tinymce-react"
+    "url": "https://github.com/Innovdata-damien/tinymce-react"
   },
   "files": [
     "lib",
@@ -33,6 +33,9 @@
   "peerDependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",

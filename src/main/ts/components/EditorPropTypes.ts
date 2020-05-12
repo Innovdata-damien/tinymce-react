@@ -97,5 +97,6 @@ export const EditorPropTypes: IEditorPropTypes = {
   disabled: PropTypes.bool,
   textareaName: PropTypes.string,
   tinymceScriptSrc: PropTypes.string,
+  win: PropTypes.any,
   ...eventPropTypes
 };
